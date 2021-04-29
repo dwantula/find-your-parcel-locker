@@ -1,22 +1,14 @@
-import React from 'react';
+import React, { memo, ReactElement } from 'react';
+import { Props } from './types';
 
-interface Input {
-  className: string;
-  name: string;
-  placeholder: string;
-  type: string;
-  value: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const Input: React.FC<Input> = ({
+function Input({
   className,
   name,
   onChange,
   placeholder,
   type,
   value,
-}: Input) => {
+}: Props): ReactElement {
   return (
     <input
       className={className}
@@ -27,6 +19,6 @@ const Input: React.FC<Input> = ({
       value={value}
     />
   );
-};
+}
 
-export default Input;
+export default memo(Input);

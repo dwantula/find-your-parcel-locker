@@ -1,7 +1,55 @@
-.App {
+@import './shared/styles/colors.scss';
+
+.parcel-locker {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
-  text-align: center;
-  padding: 10px;
+}
+
+.prcel-locker__heaader {
+  display: flex;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  color: gold;
+}
+
+.parcel-locker__main {
+  display: flex;
+  width: 80%;
+  border: 2px solid $navy;
+  height: 75vh;
+  align-self: center;
+}
+
+.parcel-locker__input {
+  display: flex;
+  border: 2px solid $blue;
+  height: 40px;
+  letter-spacing: 2px;
+  width: 220px;
+  padding: 10px 20px;
+  margin: 10px 20px;
+}
+
+.parcel-locker__footer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 2px;
+  color: $white;
+  height: 10vh;
+  background-color: $gray;
+}
+
+.parcel-locker__line {
+  border-top: 2px solid $navy;
+  height: 1px;
+  margin-top: -20px;
+  width: 40%;
+  padding-bottom: 10px;
+  opacity: 0.3;
 }
