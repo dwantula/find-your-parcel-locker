@@ -1,18 +1,21 @@
 import React, { memo, useState, useMemo } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
+
 import debounce from 'lodash.debounce';
 
 import Input from './shared/components/Input/Input';
 import store from './shared/store';
 
 import './App.scss';
+import { fetchAddressCoordinates } from './shared/services/parcel-locker';
 
 function App(): JSX.Element {
-  const [inputValue, setInputValue] = useState('');
+  const [address, setAddress] = useState('');
+  const dispatch = useDispatch();
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const filterPhrase = event.target.value;
-    setInputValue(filterPhrase);
+    setAddress(filterPhrase);
     searchDebounced(filterPhrase);
   }
 
@@ -20,10 +23,10 @@ function App(): JSX.Element {
     () =>
       debounce((filterPhrase) => {
         if (filterPhrase) {
-          console.log('działa');
+          dispatch(fetchAddressCoordinates('Warszawa'));
         }
       }, 600),
-    [inputValue],
+    [address],
   );
   return (
     <Provider store={store}>
@@ -37,7 +40,7 @@ function App(): JSX.Element {
             className="parcel-locker__input"
             placeholder={'Write city, road'}
             name="searchPlaceInput"
-            value={inputValue}
+            value={address}
             onChange={handleInputChange}
           />
         </main>
