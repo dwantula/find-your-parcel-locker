@@ -1,19 +1,23 @@
-import React, { ReactNode } from 'react';
-import { InitialState, Action } from '../../../types/api';
+import { AnyAction, Reducer } from 'redux';
 import {
   GET_ADDRESS_STARTED,
   GET_ADDRESS_FULFILLED,
   GET_ADDRESS_REJECTED,
 } from './actions';
 
-const initialState: InitialState = {
-  data: {},
+type CoordinatesState = {
+  coordinates: unknown;
+  error: string;
+};
+
+const initialState: CoordinatesState = {
+  coordinates: {},
   error: '',
 };
 
-const conrdinatesReducer: React.ReactNode = (
+const conrdinatesReducer: Reducer = (
   state = initialState,
-  action: Action,
+  action: AnyAction,
 ) => {
   switch (action.type) {
     case GET_ADDRESS_STARTED: {

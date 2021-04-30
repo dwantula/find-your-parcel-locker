@@ -1,4 +1,5 @@
-import { GetCoordinates, Response, Coordinates } from '../../types/api';
+import { GetCoordinates } from '../../types/api';
+import { Coordinates } from '../../types/coordinates';
 import apiClient from './apiClient';
 
 export async function fetchAddressCoordinates(
@@ -8,8 +9,9 @@ export async function fetchAddressCoordinates(
     q: address,
     format: 'jsonv2',
   };
-  const response = await apiClient.get<Response>('search', {
-    params: { params },
+  const response = await apiClient.get<GetCoordinates.Response>('search', {
+    params,
   });
-  return response;
+
+  return response.data;
 }

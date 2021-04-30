@@ -7,7 +7,7 @@ import Input from './shared/components/Input/Input';
 import store from './shared/store';
 
 import './App.scss';
-import { fetchAddressCoordinates } from './shared/services/parcel-locker';
+import { fetchAddressCoordinates } from './shared/services/parcelLocker';
 
 function App(): JSX.Element {
   const [address, setAddress] = useState('');
